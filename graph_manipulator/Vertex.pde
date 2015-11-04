@@ -43,14 +43,16 @@ class Vertex{
  
   void draw(){
     if(selected){
-      stroke(255, 255, 0);
+      stroke(255, 166, 0);
       line(xpos,ypos,mouseX,mouseY);
-      fill(200);
+      fill(255, 238, 0);
     }else{
-      stroke(255, 255, 255);
-      fill(255);
+      stroke(255, 166, 0);
+      fill(255, 140, 0);
     }
     ellipse(xpos,ypos,r,r);
-    text(name, xpos+r, ypos+r);
+    fill(0);
+    textSize(labelSize);
+    text(name, xpos-labelSize/4, ypos+labelSize/3);
   }
 }

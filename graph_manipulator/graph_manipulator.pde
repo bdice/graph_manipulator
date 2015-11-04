@@ -11,27 +11,29 @@ Press space to switch between the graph G and its complement G^c.
 */
 
 Graph g;
+float vertexSize = 30;
+float labelSize = 20;
+float edgeThickness = 3;
 
 void setup()
 {
   size(640, 360);
-  fill(255, 204);
   noStroke();
   ArrayList<Vertex> vertices = new ArrayList<Vertex>();
   ArrayList<Edge> edges = new ArrayList<Edge>();
-  vertices.add(new Vertex( 50,  50, 10, "a"));
-  vertices.add(new Vertex(150,  50, 10, "b"));
-  vertices.add(new Vertex(250,  50, 10, "c"));
-  vertices.add(new Vertex( 50, 150, 10, "d"));
-  vertices.add(new Vertex(150, 150, 10, "e"));
-  vertices.add(new Vertex(250, 150, 10, "f"));
+  vertices.add(new Vertex( 50,  50, vertexSize, "a"));
+  vertices.add(new Vertex(150,  50, vertexSize, "b"));
+  vertices.add(new Vertex(250,  50, vertexSize, "c"));
+  vertices.add(new Vertex( 50, 150, vertexSize, "d"));
+  vertices.add(new Vertex(150, 150, vertexSize, "e"));
+  vertices.add(new Vertex(250, 150, vertexSize, "f"));
   g = new Graph(vertices, edges);
 }
 
 void draw()
 {
-  background(0);
-  fill(255);
+  strokeWeight(edgeThickness);
+  background(255);
   g.draw();
 }
 

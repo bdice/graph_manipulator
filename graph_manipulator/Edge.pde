@@ -13,7 +13,7 @@ class Edge{
     float y1 = u.getY();
     float x2 = v.getX();
     float y2 = v.getY();
-    stroke(0, 255, 255);
+    stroke(255, 166, 0);
     line(x1, y1, x2, y2);
   }
   

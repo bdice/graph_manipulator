@@ -9,11 +9,11 @@ class Graph{
   }
   
   void draw(){
-    for(Vertex v : vertices){
-      v.draw();
-    }
     for(Edge e : edges){
       e.draw();
+    }
+    for(Vertex v : vertices){
+      v.draw();
     }
   }
   
