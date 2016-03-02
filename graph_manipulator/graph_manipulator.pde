@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 /*
 
@@ -11,29 +11,30 @@ Press space to switch between the graph G and its complement G^c.
 */
 
 Graph g;
-float vertexSize = 30;
-float labelSize = 20;
+float vertexSize = 40;
+float labelSize = 30;
 float edgeThickness = 3;
 
 void setup()
 {
-  size(640, 360);
+  size(1024, 768);
   noStroke();
   ArrayList<Vertex> vertices = new ArrayList<Vertex>();
   ArrayList<Edge> edges = new ArrayList<Edge>();
-  vertices.add(new Vertex( 50,  50, vertexSize, "a"));
-  vertices.add(new Vertex(150,  50, vertexSize, "b"));
-  vertices.add(new Vertex(250,  50, vertexSize, "c"));
-  vertices.add(new Vertex( 50, 150, vertexSize, "d"));
-  vertices.add(new Vertex(150, 150, vertexSize, "e"));
-  vertices.add(new Vertex(250, 150, vertexSize, "f"));
   g = new Graph(vertices, edges);
+  g.circleGraph(8, 100);
+  //g.starryGraph();
 }
 
 void draw()
 {
   strokeWeight(edgeThickness);
   background(255);
+  text("Edges: "+g.getEdgeCount(), 50, 40);
+  text("Pi:   "+g.getDegreeSequence(), 50, 80);
+  text("Pi*:  "+g.getConjugateSequence(), 50, 120);
+  text("Trace: "+g.getTrace(), 50, 160);
+  text("Threshold: "+(g.isThreshold()?"Yes":"No"), 50, 200);
   g.draw();
 }
 
@@ -69,5 +70,11 @@ void mouseDragged(){
 void keyPressed(){
   if(key == ' '){
     g.complement();
+  }else if(key == 'u'){
+    g.updateGraph();
+  }else if(key == 'h'){
+    g.hamiltonianCycle();
+  }else if(key == 'r'){
+    g.swapRandomEdge();
   }
 }

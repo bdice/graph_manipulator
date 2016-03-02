@@ -4,6 +4,7 @@ class Vertex{
   float ypos;
   String name;
   boolean selected;
+  boolean highlighted;
  
   Vertex(float _xpos, float _ypos, float _r, String _name){
     r = _r;
@@ -12,7 +13,7 @@ class Vertex{
     name = _name;
   }
  
-  void move (float _xpos, float _ypos) {
+  void move(float _xpos, float _ypos){
     xpos = _xpos;
     ypos = _ypos;
   }
@@ -33,8 +34,20 @@ class Vertex{
     return selected;
   }
   
+  String toString(){
+    return name;
+  }
+  
   void select(){
     selected = !selected;
+  }
+  
+  void highlight(boolean setValue){
+    highlighted = setValue;
+  }
+  
+  void highlight(){
+    highlighted = !highlighted;
   }
   
   float distanceTo(float x, float y){
@@ -46,6 +59,9 @@ class Vertex{
       stroke(255, 166, 0);
       line(xpos,ypos,mouseX,mouseY);
       fill(255, 238, 0);
+    }else if(highlighted){
+      stroke(0, 166, 255);
+      fill(0, 140, 255);
     }else{
       stroke(255, 166, 0);
       fill(255, 140, 0);
